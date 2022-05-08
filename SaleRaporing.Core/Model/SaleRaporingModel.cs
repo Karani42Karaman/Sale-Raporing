@@ -15,5 +15,7 @@ namespace SaleRaporing.Core.Model
         public int TotalPrice { get; set; }        
 
         public DateTime DateOfSale { get; set; }
+
+        public DateTime DateOfRegistration { get; set; }
     }
 }

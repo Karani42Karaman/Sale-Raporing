@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SaleRaporing.Core\SaleRaporing.Core.csproj" />
+    <ProjectReference Include="..\SaleRaporing.DataAccess\SaleRaporing.DataAccess.csproj" />
     <ProjectReference Include="..\SaleRaporing.Service\SaleRaporing.Service.csproj" />
     <ProjectReference Include="..\SaleReporing.Data\SaleReporing.Data.csproj" />
   </ItemGroup>

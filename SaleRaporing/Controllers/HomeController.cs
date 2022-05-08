@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SaleRaporing.Core.Service;
+using SaleRaporing.DataAccess;
+using SaleRaporing.DataAccess.Model;
 using SaleRaporing.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -18,12 +21,33 @@ namespace SaleRaporing.Controllers
             _logger = logger;
         }
 
+
+
+        [HttpGet]
         public IActionResult Index()
+        { 
+            using(MongoRepository<rpacollection> mongoRepository = new MongoRepository<rpacollection>()){
+                ViewModel model = new ViewModel();
+                model.SaleRaporing = _saleRaporingService.GetSaleRaporingModels().Result;
+                model.RpaCollection = mongoRepository.GetAll();
+                return View(model);
+            }
+        }
+
+
+
+
+
+        [HttpPost]
+        public IActionResult ExcelDownload(DateTime createDate )
         {
-
-            var a = _saleRaporingService.GetSaleRaporingModels().Result;
-
-            return View(a);
+            const string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8";
+            string fileDownloadName = "rpa.xlsx";
+            using (MongoRepository<rpacollection> mongoRepository = new MongoRepository<rpacollection>())
+            {
+                var fileList = mongoRepository.Get(x=>x.CreateDate == createDate);
+                 return File(fileList.FileContent, contentType, fileDownloadName);
+            }
         }
 
 
