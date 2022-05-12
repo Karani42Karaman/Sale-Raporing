@@ -1,6 +1,5 @@
-﻿ 
-@model ViewModel
- 
+﻿@model ViewModel
+
 
 @{
     ViewData["Title"] = "Index";
@@ -8,142 +7,145 @@
 
 
 <html>
-    <head>
-        <style>
-            .table {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-    white-space: nowrap;
-}
-        </style>
-    </head>
+<head>
+    <style>
+        td {
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
 
- 
- 
-  
+
+
+
 <body>
-<p>
-    @Html.ActionLink("Dowload Excel",  "Dowload Excel" , new { /* id=item.PrimaryKey */  }, new { @data_toggle = "modal", @data_target = "#myModal"}) 
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-               Product
-            </th>
-            <th>
-              Customer
-            </th>
-            <th>
-                TotalProductSold
-            </th>
-            <th>
-                TotalPrice
-            </th>
-            <th>
-                DateOfSale
-            </th>
-             <th>
-                File Date Of Registration
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.SaleRaporing) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalProductSold)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfSale)
-            </td>
-             <td>
-                @Html.DisplayFor(modelItem => item.DateOfRegistration)
-            </td>
-            <td>
-               @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })*@ | 
-                
-              @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        @Html.ActionLink("Dowload Excel",  "Dowload Excel" , new { /* id=item.PrimaryKey */  }, new { @data_toggle = "modal", @data_target = "#myModal"})
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Product
+                </th>
+                <th>
+                    Customer
+                </th>
+                <th>
+                    TotalProductSold
+                </th>
+                <th>
+                    TotalPrice
+                </th>
+                <th>
+                    DateOfSale
+                </th>
+                <th>
+                    File Date Of Registration
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SaleRaporing)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalProductSold)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfSale)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfRegistration)
+                    </td>
+                    <td>
+                        @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })*@ 
+
+                        @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 
-<!-- Modal -->
- 
-<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <table class="table">
-      <thead>
-        <tr>     
-            <th>
-                Create Date
-            </th>
-            <th>
-                Content Type
-            </th>
-             <th>
-                File Content
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.RpaCollection) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>          
-            <td style="width: 10% !important; max-width: 10% !important; margin-bottom: 20px !important;">
-                @Html.DisplayFor(modelItem => item.ContentType)
-            </td>
-              <td style="width: 10% !important; max-width: 10% !important; margin-bottom: 20px !important;">
-                @Html.DisplayFor(modelItem => item.FileContent)
-            </td>
-            <td>
-              @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })*@         
-              @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <!-- Modal -->
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Create Date
+                                </th>
+                                <th>
+                                    Content Type
+                                </th>
+                                <th>
+                                    File Content
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.RpaCollection)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreateDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ContentType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FileContent)
+                                    </td>
+                                    <td>
+
+                                        @Html.ActionLink("Download File", "ExcelDownload", new {  createDate=item.CreateDate })
+                                        @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 </body>
-</html>    
+</html>
 
