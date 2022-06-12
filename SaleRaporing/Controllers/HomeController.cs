@@ -43,12 +43,12 @@ namespace SaleRaporing.Controllers
         public IActionResult ExcelDownload(DateTime createDate )
         {
             const string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8";
-            string fileDownloadName = "rpa.xlsx";
+            
             using (MongoRepository<rpacollection> mongoRepository = new MongoRepository<rpacollection>())
             {
-                var b = BsonDateTime.Create(createDate.AddHours(3));
-                var fileList = mongoRepository.Get(x=>x.CreateDate.Equals(b));
-                 return File(fileList.FileContent, contentType, fileDownloadName);
+                var bHour= BsonDateTime.Create(createDate.AddHours(3));
+                var file = mongoRepository.Get(x=>x.CreateDate.Equals(bHour));
+                 return File(file.FileContent, contentType, file.FileName);
             }
         }
 

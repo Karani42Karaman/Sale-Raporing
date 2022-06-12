@@ -104,6 +104,9 @@
                         <thead>
                             <tr>
                                 <th>
+                                    File Name
+                                </th>
+                                <th>
                                     Create Date
                                 </th>
                                 <th>
@@ -119,6 +122,9 @@
                             @foreach (var item in Model.RpaCollection)
                             {
                                 <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FileName)
+                                    </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CreateDate)
                                     </td>

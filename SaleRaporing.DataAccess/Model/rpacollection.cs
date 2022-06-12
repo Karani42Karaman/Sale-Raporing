@@ -6,6 +6,9 @@ namespace SaleRaporing.DataAccess.Model
     public class rpacollection : MongoBaseModel
     {
         [BsonElement]
+        public String FileName { get; set; }    
+
+        [BsonElement]
         public byte[] FileContent { get; set; }
 
         [BsonElement]
@@ -13,5 +16,9 @@ namespace SaleRaporing.DataAccess.Model
 
         [BsonElement]
         public DateTime CreateDate { get; set; }
+
+        [BsonElement]
+        public byte[] FileHash { get; set; }
+
     }
 }
