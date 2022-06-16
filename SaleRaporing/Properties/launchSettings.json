@@ -32,6 +32,11 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "MONGO_URI": "mongodb://root:root@127.0.0.1:27017",
+        "MONGO_DB": "rpadb"
+      },
       "publishAllPorts": true
     }
   }

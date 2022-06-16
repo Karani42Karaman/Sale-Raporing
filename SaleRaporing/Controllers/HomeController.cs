@@ -35,25 +35,18 @@ namespace SaleRaporing.Controllers
             }
         }
 
-
-
-
-
-      
-        public IActionResult ExcelDownload(DateTime createDate )
+        public IActionResult ExcelDownload(string id )
         {
             const string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8";
-            string fileDownloadName = "rpa.xlsx";
+
             using (MongoRepository<rpacollection> mongoRepository = new MongoRepository<rpacollection>())
             {
-                var b = BsonDateTime.Create(createDate.AddHours(3));
-                var fileList = mongoRepository.Get(x=>x.CreateDate.Equals(b));
-                 return File(fileList.FileContent, contentType, fileDownloadName);
+               
+                var file = mongoRepository.Get(x => x.Id.Equals(id));
+                return File(file.FileContent, contentType, file.FileName);
             }
+             
         }
-
-
-
 
         public IActionResult Privacy()
         {

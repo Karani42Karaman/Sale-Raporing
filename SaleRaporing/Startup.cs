@@ -45,6 +45,11 @@ namespace SaleRaporing
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<SaleRaporingDBContext>();
+                context.Database.Migrate();
+            }
             app.UseStaticFiles();
 
             app.UseRouting();
