@@ -103,6 +103,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                               
                                 <th>
                                     File Name
                                 </th>
@@ -122,6 +123,8 @@
                             @foreach (var item in Model.RpaCollection)
                             {
                                 <tr>
+                                   
+
                                     <td>
                                         @Html.DisplayFor(modelItem => item.FileName)
                                     </td>
@@ -136,7 +139,7 @@
                                     </td>
                                     <td>
 
-                                        @Html.ActionLink("Download File", "ExcelDownload", new {  createDate=item.CreateDate })
+                                        @Html.ActionLink("Download File", "ExcelDownload", new {  id=item.Id })
                                         @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
                                     </td>
                                 </tr>
