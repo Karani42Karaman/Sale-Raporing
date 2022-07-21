@@ -21,9 +21,11 @@ namespace SaleReporing.Data
         {
 
 
+
             modelBuilder.ApplyConfiguration(new SaleRaporingConfiguration());
             base.OnModelCreating(modelBuilder);
         }
+
 
 
 

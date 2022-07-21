@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SaleRaporing.Core;
 using SaleRaporing.Core.Service;
+using SaleRaporing.Extentions;
 using SaleRaporing.Service;
 using SaleReporing.Data;
  
@@ -45,11 +46,9 @@ namespace SaleRaporing
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetRequiredService<SaleRaporingDBContext>();
-                context.Database.Migrate();
-            }
+
+            app.UseAutoMigration();
+
             app.UseStaticFiles();
 
             app.UseRouting();
